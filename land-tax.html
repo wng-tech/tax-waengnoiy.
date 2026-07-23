@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ภาษีที่ดินและสิ่งปลูกสร้าง | ศูนย์ข้อมูลภาษีท้องถิ่น อบต.แวงน้อย</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-logo">ศูนย์ข้อมูลภาษี<span>ท้องถิ่น</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">หน้าแรก</a></li>
+      <li class="nav-item">
+        <a href="knowledge.html">ภาษีป้าย <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown">
+          <a href="knowledge.html">ความรู้ภาษีป้าย</a>
+          <a href="calculator.html">คำนวณภาษีป้าย</a>
+        </div>
+      </li>
+      <li><a href="land-tax.html" class="active">ภาษีที่ดินและสิ่งปลูกสร้าง</a></li>
+      <li><a href="#footer-contact">ติดต่อเรา</a></li>
+    </ul>
+    <a href="knowledge.html" class="nav-cta">ความรู้ภาษีป้าย</a>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="wrap">
+    <h1>ภาษีที่ดินและสิ่งปลูกสร้าง</h1>
+    <p>ตารางราคาประเมินสิ่งปลูกสร้างและอัตราค่าเสื่อมราคา สำหรับใช้เป็นข้อมูลเบื้องต้น</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap" style="max-width:760px">
+    <h2 class="section-title">เกี่ยวกับข้อมูลชุดนี้</h2>
+    <p style="font-size:14.5px">
+      หน้านี้รวบรวมตารางราคาประเมินทุนทรัพย์สิ่งปลูกสร้างและอัตราค่าเสื่อมราคา เพื่อเป็นข้อมูลอ้างอิงเบื้องต้นสำหรับประชาชนในเขต อบต.แวงน้อย
+      <b>หน้านี้ไม่มีเครื่องคำนวณราคาประเมินอัตโนมัติ</b> เนื่องจากการประเมินราคาจริงต้องพิจารณาปัจจัยหลายด้านประกอบกัน
+      (อายุอาคาร ทำเล สภาพการใช้งาน ฯลฯ) จึงควรให้เจ้าหน้าที่เป็นผู้ประเมินราคาอย่างเป็นทางการ ตารางด้านล่างมีไว้เพื่อการศึกษาข้อมูลเบื้องต้นเท่านั้น
+    </p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="section-title">ตารางราคาประเมินสิ่งปลูกสร้าง</h2>
+    <p class="section-sub">บัญชีราคาประเมินสิ่งปลูกสร้าง ตามพระราชบัญญัติการประเมินราคาทรัพย์สินเพื่อประโยชน์แห่งรัฐ พ.ศ. 2562 จังหวัดขอนแก่น (69 รายการ)</p>
+
+    <div class="table-tools">
+      <input type="text" id="priceSearch" placeholder="ค้นหาด้วยชื่อสิ่งปลูกสร้างหรือรหัส เช่น บ้านพักอาศัย, ตึกแถว, 401" oninput="filterPriceTable()">
+    </div>
+    <p class="table-count" id="priceCount">แสดงทั้งหมด 69 รายการ</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" id="priceTable">
+        <thead>
+          <tr><th style="width:90px">รหัส</th><th>ประเภทสิ่งปลูกสร้าง</th><th style="width:160px; text-align:right">ราคาประเมิน (บาท/ตร.ม.)</th></tr>
+        </thead>
+        <tbody>
+      <tr><td class="code">101</td><td>บ้านพักอาศัยไม้ชั้นเดียว</td><td class="num">8,600.00</td></tr>
+      <tr><td class="code">102</td><td>บ้านพักอาศัยไม้ชั้นเดียวใต้ถุนสูง</td><td class="num">8,600.00</td></tr>
+      <tr><td class="code">103</td><td>บ้านพักอาศัยตึกชั้นเดียว</td><td class="num">8,450.00</td></tr>
+      <tr><td class="code">104</td><td>บ้านพักอาศัยไม้สองชั้น</td><td class="num">8,250.00</td></tr>
+      <tr><td class="code">105</td><td>บ้านพักอาศัยตึกสองชั้น</td><td class="num">8,350.00</td></tr>
+      <tr><td class="code">106</td><td>บ้านพักอาศัยครึ่งตึกครึ่งไม้สองชั้น</td><td class="num">8,450.00</td></tr>
+      <tr><td class="code">107</td><td>บ้านพักอาศัยตึกสามชั้น</td><td class="num">8,150.00</td></tr>
+      <tr><td class="code">108</td><td>บ้านพักอาศัยแฝดตึกสองชั้น</td><td class="num">8,000.00</td></tr>
+      <tr><td class="code">109</td><td>บ้านพักอาศัยแฝดตึกสามชั้น</td><td class="num">7,800.00</td></tr>
+      <tr><td class="code">110</td><td>บ้านทรงไทยไม้ชั้นเดียวใต้ถุนสูง</td><td class="num">9,550.00</td></tr>
+      <tr><td class="code">111</td><td>บ้านทรงไทยครึ่งตึกครึ่งไม้สองชั้น</td><td class="num">9,300.00</td></tr>
+      <tr><td class="code">112</td><td>บ้านพักอาศัยแฝดตึกชั้นเดียว</td><td class="num">8,700.00</td></tr>
+      <tr><td class="code">201</td><td>บ้านแถว (ทาวน์เฮาส์) ชั้นเดียว</td><td class="num">7,700.00</td></tr>
+      <tr><td class="code">202</td><td>บ้านแถว (ทาวน์เฮาส์) สองชั้น</td><td class="num">7,500.00</td></tr>
+      <tr><td class="code">203</td><td>บ้านแถว (ทาวน์เฮาส์) สามชั้น</td><td class="num">7,550.00</td></tr>
+      <tr><td class="code">204</td><td>บ้านแถว (ทาวน์เฮาส์) สี่ชั้น</td><td class="num">7,500.00</td></tr>
+      <tr><td class="code">301</td><td>ห้องแถวไม้ชั้นเดียว</td><td class="num">7,650.00</td></tr>
+      <tr><td class="code">302</td><td>ห้องแถวไม้สองชั้น</td><td class="num">8,200.00</td></tr>
+      <tr><td class="code">303</td><td>ห้องแถวครึ่งตึกครึ่งไม้สองชั้น</td><td class="num">8,050.00</td></tr>
+      <tr><td class="code">401</td><td>ตึกแถวชั้นเดียว</td><td class="num">7,450.00</td></tr>
+      <tr><td class="code">402</td><td>ตึกแถวสองชั้น</td><td class="num">8,050.00</td></tr>
+      <tr><td class="code">403</td><td>ตึกแถวสองชั้นครึ่ง</td><td class="num">8,000.00</td></tr>
+      <tr><td class="code">404</td><td>ตึกแถวสามชั้น</td><td class="num">8,100.00</td></tr>
+      <tr><td class="code">405</td><td>ตึกแถวสามชั้นครึ่ง</td><td class="num">8,100.00</td></tr>
+      <tr><td class="code">406</td><td>ตึกแถวสี่ชั้น</td><td class="num">8,350.00</td></tr>
+      <tr><td class="code">407</td><td>ตึกแถวสี่ชั้นครึ่ง</td><td class="num">8,350.00</td></tr>
+      <tr><td class="code">408</td><td>ตึกแถวห้าชั้น</td><td class="num">8,350.00</td></tr>
+      <tr><td class="code">409</td><td>ตึกแถวหกชั้น</td><td class="num">8,400.00</td></tr>
+      <tr><td class="code">501</td><td>คลังสินค้า พื้นที่ไม่เกิน 300 ตารางเมตร</td><td class="num">5,650.00</td></tr>
+      <tr><td class="code">502</td><td>คลังสินค้า พื้นที่เกินกว่า 300 ตารางเมตรขึ้นไป</td><td class="num">3,500.00</td></tr>
+      <tr><td class="code">503</td><td>เรือนคนใช้/ครัว</td><td class="num">6,600.00</td></tr>
+      <tr><td class="code">504</td><td>โรงจอดรถ</td><td class="num">2,550.00</td></tr>
+      <tr><td class="code">505</td><td>สถานศึกษา</td><td class="num">7,400.00</td></tr>
+      <tr><td class="code">506/1</td><td>โรงแรม ความสูงไม่เกิน 5 ชั้น</td><td class="num">9,550.00</td></tr>
+      <tr><td class="code">506/2</td><td>โรงแรม ความสูงเกินกว่า 5 ชั้นขึ้นไป</td><td class="num">9,600.00</td></tr>
+      <tr><td class="code">507</td><td>โรงมหรสพ</td><td class="num">7,500.00</td></tr>
+      <tr><td class="code">508</td><td>สถานพยาบาล</td><td class="num">9,300.00</td></tr>
+      <tr><td class="code">509/1</td><td>สำนักงาน ความสูงไม่เกิน 5 ชั้น</td><td class="num">7,450.00</td></tr>
+      <tr><td class="code">509/2</td><td>สำนักงาน ความสูงเกินกว่า 5 ชั้นขึ้นไป</td><td class="num">8,800.00</td></tr>
+      <tr><td class="code">510</td><td>ภัตตาคาร</td><td class="num">6,850.00</td></tr>
+      <tr><td class="code">511/1</td><td>ห้างสรรพสินค้า</td><td class="num">8,900.00</td></tr>
+      <tr><td class="code">511/2</td><td>อาคารพาณิชยกรรม ประเภทค้าปลีกค้าส่ง</td><td class="num">7,350.00</td></tr>
+      <tr><td class="code">512</td><td>สถานีบริการน้ำมันเชื้อเพลิง</td><td class="num">5,350.00</td></tr>
+      <tr><td class="code">513</td><td>โรงงาน</td><td class="num">5,900.00</td></tr>
+      <tr><td class="code">514</td><td>ตลาด พื้นที่ไม่เกิน 1000 ตารางเมตร</td><td class="num">3,600.00</td></tr>
+      <tr><td class="code">515</td><td>ตลาด พื้นที่เกินกว่า 1000 ตารางเมตรขึ้นไป</td><td class="num">3,700.00</td></tr>
+      <tr><td class="code">516</td><td>อาคารพาณิชย์ ประเภทโฮมออฟฟิศ</td><td class="num">8,800.00</td></tr>
+      <tr><td class="code">517</td><td>โรงเลี้ยงสัตว์</td><td class="num">2,000.00</td></tr>
+      <tr><td class="code">518</td><td>โรงงานซ่อมรถยนต์</td><td class="num">5,600.00</td></tr>
+      <tr><td class="code">519</td><td>อาคารจอดรถ</td><td class="num">5,300.00</td></tr>
+      <tr><td class="code">520/1</td><td>อาคารอยู่อาศัยรวม ความสูงไม่เกิน 5 ชั้น</td><td class="num">7,900.00</td></tr>
+      <tr><td class="code">520/2</td><td>อาคารอยู่อาศัยรวม ความสูงเกินกว่า 5 ชั้นขึ้นไป</td><td class="num">8,700.00</td></tr>
+      <tr><td class="code">521</td><td>ป้อมยาม</td><td class="num">5,900.00</td></tr>
+      <tr><td class="code">522</td><td>อาคารพาณิชย์ ประเภทโชว์รูมรถยนต์</td><td class="num">5,200.00</td></tr>
+      <tr><td class="code">523</td><td>ห้องน้ำรวม</td><td class="num">6,100.00</td></tr>
+      <tr><td class="code">601</td><td>รั้วคอนกรีต</td><td class="num">2,050.00</td></tr>
+      <tr><td class="code">602</td><td>รั้วลวดหนาม</td><td class="num">400.00</td></tr>
+      <tr><td class="code">603</td><td>รั้วสังกะสี</td><td class="num">550.00</td></tr>
+      <tr><td class="code">604</td><td>รั้วลวดถัก</td><td class="num">900.00</td></tr>
+      <tr><td class="code">605</td><td>รั้วไม้</td><td class="num">1,400.00</td></tr>
+      <tr><td class="code">606</td><td>รั้วเหล็กดัด</td><td class="num">2,800.00</td></tr>
+      <tr><td class="code">607</td><td>รั้วอัลลอยด์</td><td class="num">5,950.00</td></tr>
+      <tr><td class="code">608</td><td>สระว่ายน้ำ</td><td class="num">7,500.00</td></tr>
+      <tr><td class="code">609</td><td>ลานกีฬาอเนกประสงค์</td><td class="num">750.00</td></tr>
+      <tr><td class="code">610</td><td>ถนนคอนกรีต</td><td class="num">850.00</td></tr>
+      <tr><td class="code">611</td><td>ลานคอนกรีต</td><td class="num">500.00</td></tr>
+      <tr><td class="code">612</td><td>ถนนลาดยาง</td><td class="num">600.00</td></tr>
+      <tr><td class="code">613</td><td>ป้ายโฆษณา</td><td class="num">8,550.00</td></tr>
+      <tr><td class="code">614</td><td>ท่าเทียบเรือ</td><td class="num">11,000.00</td></tr>
+        </tbody>
+      </table>
+      <p class="no-results" id="priceNoResults">ไม่พบรายการที่ค้นหา ลองใช้คำอื่น</p>
+    </div>
+
+    <p class="source-note">
+      ที่มา: บัญชีราคาประเมินสิ่งปลูกสร้าง ตามพระราชบัญญัติการประเมินราคาทรัพย์สินเพื่อประโยชน์แห่งรัฐ พ.ศ. 2562 จังหวัดขอนแก่น
+      ประกาศ ณ วันที่ 2 ธันวาคม พ.ศ. 2564 (นายสมศักดิ์ จังตระกุล ผู้ว่าราชการจังหวัดขอนแก่น ประธานกรรมการประเมินราคาทรัพย์สินเพื่อประโยชน์แห่งรัฐประจำจังหวัดขอนแก่น)
+      มีผลใช้บังคับตั้งแต่วันที่ 1 มกราคม พ.ศ. 2566 เป็นต้นไป
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">ตารางอัตราค่าเสื่อมราคาตามอายุอาคาร</h2>
+    <p class="section-sub">อัตราร้อยละของค่าเสื่อมที่หักได้ แบ่งตามประเภทโครงสร้างและอายุอาคาร (ปี)</p>
+
+    <div class="callout">
+      <b>อ่านตารางนี้อย่างไร:</b> แต่ละประเภทโครงสร้างมี "เพดานค่าเสื่อมสูงสุด" ที่แตกต่างกัน เมื่ออาคารมีอายุถึงเพดานแล้ว
+      จะหักค่าเสื่อมคงที่ตามเพดานนั้นตลอดไป ไม่หักเพิ่มอีก — <b>ไม้</b> ถึงเพดาน 93% เร็วที่สุด (อายุ 19 ปี),
+      <b>ตึกครึ่งไม้</b> ถึงเพดาน 85% ที่อายุ 22 ปี, <b>ตึก</b> เสื่อมช้าสุด ถึงเพดาน 76% ที่อายุ 43 ปี
+    </div>
+
+    <div class="data-table-wrap">
+      <table class="data-table dep-table">
+        <thead>
+          <tr><th>อายุอาคาร (ปี)</th><th>ประเภทตึก</th><th>ประเภทตึกครึ่งไม้</th><th>ประเภทไม้</th></tr>
+        </thead>
+        <tbody>
+      <tr><td>1</td><td>1%</td><td>2%</td><td>3%</td></tr>
+      <tr><td>2</td><td>2%</td><td>4%</td><td>6%</td></tr>
+      <tr><td>3</td><td>3%</td><td>6%</td><td>9%</td></tr>
+      <tr><td>4</td><td>4%</td><td>8%</td><td>12%</td></tr>
+      <tr><td>5</td><td>5%</td><td>10%</td><td>15%</td></tr>
+      <tr><td>6</td><td>6%</td><td>14%</td><td>20%</td></tr>
+      <tr><td>7</td><td>7%</td><td>18%</td><td>25%</td></tr>
+      <tr><td>8</td><td>8%</td><td>22%</td><td>30%</td></tr>
+      <tr><td>9</td><td>9%</td><td>26%</td><td>35%</td></tr>
+      <tr><td>10</td><td>10%</td><td>30%</td><td>40%</td></tr>
+      <tr><td>11</td><td>12%</td><td>34%</td><td>45%</td></tr>
+      <tr><td>12</td><td>14%</td><td>38%</td><td>50%</td></tr>
+      <tr><td>13</td><td>16%</td><td>42%</td><td>55%</td></tr>
+      <tr><td>14</td><td>18%</td><td>46%</td><td>60%</td></tr>
+      <tr><td>15</td><td>20%</td><td>50%</td><td>65%</td></tr>
+      <tr><td>16</td><td>22%</td><td>55%</td><td>72%</td></tr>
+      <tr><td>17</td><td>24%</td><td>60%</td><td>79%</td></tr>
+      <tr><td>18</td><td>26%</td><td>65%</td><td>86%</td></tr>
+      <tr><td>19</td><td>28%</td><td>70%</td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>20</td><td>30%</td><td>75%</td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>21</td><td>32%</td><td>80%</td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>22</td><td>34%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>23</td><td>36%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>24</td><td>38%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>25</td><td>40%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>26</td><td>42%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>27</td><td>44%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>28</td><td>46%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>29</td><td>48%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>30</td><td>50%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>31</td><td>52%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>32</td><td>54%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>33</td><td>56%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>34</td><td>58%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>35</td><td>60%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>36</td><td>62%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>37</td><td>64%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>38</td><td>66%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>39</td><td>68%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>40</td><td>70%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>41</td><td>72%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>42</td><td>74%</td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>43</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>44</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>45</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>46</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>47</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>48</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>49</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>50</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>51</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>52</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>53</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+      <tr><td>54</td><td><span class="dep-cap">76% ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">85%ตลอดอายุการใช้งาน</span></td><td><span class="dep-cap">93% ตลอดอายุการใช้งาน</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="source-note">
+      ที่มา: ตารางกำหนดอัตราร้อยละของค่าเสื่อมโรงเรือนสิ่งปลูกสร้าง ตามระเบียบของคณะกรรมการกำหนดราคาประเมินทุนทรัพย์
+      ว่าด้วยหลักเกณฑ์และวิธีการในการกำหนดราคาประเมินทุนทรัพย์ของอสังหาริมทรัพย์ เพื่อเรียกเก็บค่าธรรมเนียมจดทะเบียนสิทธิและนิติกรรม พ.ศ. 2535
+    </p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="band">
+      <h2>ต้องการประเมินราคาอย่างเป็นทางการ?</h2>
+      <p>ตารางนี้เป็นข้อมูลเบื้องต้นเพื่อการศึกษาเท่านั้น กรุณาติดต่อกองคลัง อบต.แวงน้อย เพื่อขอประเมินราคาอย่างเป็นทางการ</p>
+      <div class="btn-row" style="justify-content:center">
+        <a href="#footer-contact" class="btn btn-pink">ติดต่อกองคลัง</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer-contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>เกี่ยวกับเว็บนี้</h4>
+        <p>ศูนย์รวมข้อมูลภาษีท้องถิ่น สำหรับประชาชนในเขต อบต.แวงน้อย ไม่ใช่การประเมินภาษีอย่างเป็นทางการ</p>
+      </div>
+      <div class="footer-col">
+        <h4>ลิงก์ด่วน</h4>
+        <a href="index.html">หน้าแรก</a>
+        <a href="knowledge.html">ความรู้ภาษีป้าย</a>
+        <a href="calculator.html">คำนวณภาษีป้าย</a>
+        <a href="land-tax.html">ภาษีที่ดินและสิ่งปลูกสร้าง</a>
+      </div>
+      <div class="footer-col">
+        <h4>ติดต่อกองคลัง อบต.แวงน้อย</h4>
+        <p>โทร. 0-4300-9687</p>
+        <p>แฟกซ์ 0-4300-9688</p>
+        <p>ตำบลแวงน้อย อำเภอแวงน้อย จังหวัดขอนแก่น 40230</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© องค์การบริหารส่วนตำบลแวงน้อย — งานจัดเก็บรายได้ กองคลัง</div>
+  </div>
+</footer>
+
+<script>
+function filterPriceTable(){
+  const q = document.getElementById('priceSearch').value.trim().toLowerCase();
+  const rows = document.querySelectorAll('#priceTable tbody tr');
+  let visible = 0;
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    const match = text.includes(q);
+    row.style.display = match ? '' : 'none';
+    if(match) visible++;
+  });
+  document.getElementById('priceCount').textContent = q ? `พบ ${visible} รายการ` : `แสดงทั้งหมด ${rows.length} รายการ`;
+  document.getElementById('priceNoResults').style.display = visible === 0 ? 'block' : 'none';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คำนวณภาษีป้าย | ศูนย์ข้อมูลภาษีท้องถิ่น อบต.แวงน้อย</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .calc-wrap{padding:48px 24px 72px; display:flex; justify-content:center;}
+  .calc-card{
+    background:#fff; border-radius:var(--radius); border:1px solid var(--border); max-width:560px; width:100%;
+    padding:28px 24px; box-shadow:0 1px 3px rgba(0,0,0,.05), 0 8px 24px rgba(0,0,0,.04);
+  }
+  .calc-result{
+    background:linear-gradient(135deg,var(--pink-bg),#F3E6EA); border:1px solid var(--pink-light);
+    border-radius:var(--radius); padding:18px 16px; margin-bottom:20px;
+  }
+  .calc-grid{display:grid; grid-template-columns:repeat(3,1fr); text-align:center; gap:4px;}
+  .calc-grid div + div{border-left:1px solid var(--pink-light);}
+  .calc-label{font-size:10.5px; color:#94a3b8; text-transform:uppercase; font-weight:600; display:block;}
+  .calc-value{font-size:17px; font-weight:700; color:var(--navy);}
+  .calc-hr{border:none; border-top:1px solid var(--pink-light); margin:14px 0;}
+  .calc-final-row{display:flex; justify-content:space-between; align-items:center; padding:0 4px;}
+  .calc-final-label{font-size:14px; font-weight:600; color:var(--navy); display:block;}
+  .calc-final-note{font-size:10px; color:var(--pink); font-weight:600; display:block; margin-top:2px;}
+  .calc-final-amount{font-size:30px; font-weight:800; color:var(--pink);}
+  .calc-final-unit{font-size:14px; font-weight:700; color:var(--pink); margin-left:4px;}
+
+  .calc-row2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;}
+  .calc-field-label{display:block; font-size:12px; font-weight:600; color:var(--navy); margin-bottom:4px;}
+  .calc-card input[type=number], .calc-card select{
+    width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:8px;
+    font-size:14px; font-family:'Sarabun',sans-serif; color:var(--navy); background:#fff;
+  }
+  .calc-card select{font-size:13px;}
+  .calc-card input:focus, .calc-card select:focus{outline:2px solid var(--pink); outline-offset:1px; border-color:transparent;}
+  .calc-field{margin-bottom:16px;}
+  .calc-error{font-size:11.5px; color:#dc2626; margin-top:4px; display:none;}
+
+  .toggle-row{
+    display:flex; align-items:center; gap:10px; background:var(--pink-bg); border-radius:10px;
+    padding:12px; margin-bottom:16px;
+  }
+  .toggle-row input{width:16px; height:16px; margin:0; flex-shrink:0;}
+  .toggle-row label{font-size:13px; font-weight:500; color:var(--navy); cursor:pointer;}
+  .toggle-hint{font-size:11.5px; color:#64748b; margin:-10px 0 16px 26px;}
+  #quarterField{display:none;}
+
+  .calc-exempt{
+    font-size:12px; color:#64748b; background:var(--pink-bg); border-radius:8px;
+    padding:10px 12px; margin-bottom:16px; line-height:1.6;
+  }
+  .calc-exempt b{color:var(--navy);}
+  .calc-footnote{margin-top:20px; text-align:center; font-size:11px; color:#94a3b8; line-height:1.6;}
+  .calc-contact{margin-top:16px; padding-top:16px; border-top:1px solid var(--border); text-align:center;}
+  .calc-contact-title{font-size:12.5px; font-weight:600; color:var(--navy); margin:0 0 6px;}
+  .calc-contact-line{font-size:12.5px; color:var(--navy); margin:2px 0;}
+  .calc-contact-label{font-weight:600; color:#94a3b8; margin-right:4px;}
+  .calc-contact-hint{font-size:10.5px; color:#94a3b8; margin:8px 0 0; line-height:1.5;}
+  .back-link{display:block; text-align:center; font-size:13px; color:var(--blue); margin-top:16px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-logo">ศูนย์ข้อมูลภาษี<span>ท้องถิ่น</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">หน้าแรก</a></li>
+      <li class="nav-item">
+        <a href="calculator.html" class="active">ภาษีป้าย <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown">
+          <a href="knowledge.html">ความรู้ภาษีป้าย</a>
+          <a href="calculator.html">คำนวณภาษีป้าย</a>
+        </div>
+      </li>
+      <li><a href="land-tax.html">ภาษีที่ดินและสิ่งปลูกสร้าง</a></li>
+      <li><a href="#footer-contact">ติดต่อเรา</a></li>
+    </ul>
+    <a href="knowledge.html" class="nav-cta">ความรู้ภาษีป้าย</a>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="wrap">
+    <h1>เครื่องคำนวณภาษีป้ายเบื้องต้น</h1>
+    <p>ประมาณการค่าภาษีก่อนยื่นแบบ ภ.ป.1 กับเจ้าหน้าที่</p>
+  </div>
+</header>
+
+<div class="calc-wrap">
+  <div class="calc-card">
+
+    <div class="calc-result">
+      <div class="calc-grid">
+        <div><span class="calc-label">พื้นที่ป้าย (ตร.ซม.)</span><span class="calc-value" id="area-result">0</span></div>
+        <div><span class="calc-label">ฐานคำนวณ (หน่วย)</span><span class="calc-value" id="units-result">0</span></div>
+        <div><span class="calc-label">อัตราภาษี (บาท)</span><span class="calc-value"><span id="rate-result">0</span>.-</span></div>
+      </div>
+      <hr class="calc-hr">
+      <div class="calc-final-row">
+        <div>
+          <span class="calc-final-label">ค่าภาษีป้ายที่ต้องชำระโดยประมาณ</span>
+          <span class="calc-final-note" id="min-tax-notice" style="display:none">*เข้าเกณฑ์ภาษีขั้นต่ำ 200 บาทตามกฎหมาย</span>
+        </div>
+        <div style="text-align:right">
+          <span class="calc-final-amount" id="final-tax">0.00</span><span class="calc-final-unit">บาท</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-row2">
+      <div>
+        <label class="calc-field-label" for="width">ความกว้าง (เซนติเมตร)</label>
+        <input type="number" id="width" value="100" min="0" step="0.1" inputmode="decimal" oninput="calculateTax()">
+      </div>
+      <div>
+        <label class="calc-field-label" for="length">ความยาว (เซนติเมตร)</label>
+        <input type="number" id="length" value="200" min="0" step="0.1" inputmode="decimal" oninput="calculateTax()">
+      </div>
+    </div>
+    <p class="calc-error" id="size-error">กรุณากรอกความกว้างและความยาวเป็นตัวเลขที่มากกว่า 0</p>
+
+    <div class="calc-field">
+      <label class="calc-field-label" for="category">ลักษณะอักษรและรูปแบบป้าย</label>
+      <select id="category" onchange="calculateTax()">
+        <option value="1_a">1(ก) อักษรไทยล้วน — ป้ายเคลื่อนที่/เปลี่ยนข้อความได้ (10 บาท)</option>
+        <option value="1_b">1(ข) อักษรไทยล้วน — ป้ายนอกจาก (ก) (5 บาท)</option>
+        <option value="2_a">2(ก) ไทยปนต่างประเทศ/ภาพ — ป้ายเคลื่อนที่/เปลี่ยนข้อความได้ (52 บาท)</option>
+        <option value="2_b">2(ข) ไทยปนต่างประเทศ/ภาพ — ป้ายนอกจาก (ก) (26 บาท)</option>
+        <option value="3_a">3(ก) ไม่มีไทย/ไทยอยู่ใต้ภาษาอื่น — ป้ายเคลื่อนที่/เปลี่ยนข้อความได้ (52 บาท)</option>
+        <option value="3_b">3(ข) ไม่มีไทย/ไทยอยู่ใต้ภาษาอื่น — ป้ายนอกจาก (ก) (50 บาท)</option>
+      </select>
+    </div>
+
+    <div class="toggle-row">
+      <input type="checkbox" id="isNewSign" onchange="toggleQuarterField()">
+      <label for="isNewSign">เป็นป้ายที่เพิ่งติดตั้งใหม่ในปีนี้ (ยังไม่เคยเสียภาษีป้ายมาก่อน)</label>
+    </div>
+    <p class="toggle-hint">ถ้าเป็นป้ายเดิมที่ต่ออายุทุกปี ไม่ต้องติ๊ก — ระบบจะคิดภาษีเต็มปีเสมอ</p>
+
+    <div class="calc-field" id="quarterField">
+      <label class="calc-field-label" for="quarter">ช่วงเดือนที่เริ่มติดตั้งป้าย (ปีแรกเท่านั้น)</label>
+      <select id="quarter" onchange="calculateTax()">
+        <option value="1.0">ม.ค. – มี.ค. (เสียภาษีเต็มปี 100%)</option>
+        <option value="0.75">เม.ย. – มิ.ย. (75%)</option>
+        <option value="0.50">ก.ค. – ก.ย. (50%)</option>
+        <option value="0.25">ต.ค. – ธ.ค. (25%)</option>
+      </select>
+    </div>
+
+    <div class="calc-exempt">
+      <b>ป้ายที่อาจได้รับยกเว้นภาษี</b> เช่น ป้ายของราชการ ป้ายวัด/มูลนิธิ/องค์กรการกุศล ป้ายที่ติดในบริเวณงานชั่วคราว —
+      กรณีเหล่านี้เครื่องคำนวณนี้ยังไม่รองรับ กรุณาติดต่อเจ้าหน้าที่เพื่อตรวจสอบสิทธิ์โดยตรง
+    </div>
+
+    <div class="calc-footnote">
+      เป็นการคำนวณเบื้องต้นเพื่อประมาณการเท่านั้น ไม่ใช่การประเมินภาษีอย่างเป็นทางการ<br>
+      การประเมินจริงต้องยื่นแบบ ภ.ป.1 และให้เจ้าหน้าที่ อบต.แวงน้อยตรวจสอบป้ายจริงตามพระราชบัญญัติภาษีป้าย พ.ศ. 2510 (แก้ไขเพิ่มเติม)
+    </div>
+
+    <div class="calc-contact">
+      <p class="calc-contact-title">ติดต่อสอบถาม กองคลัง อบต.แวงน้อย</p>
+      <p class="calc-contact-line"><span class="calc-contact-label">โทร.</span> 0-4300-9687</p>
+      <p class="calc-contact-line"><span class="calc-contact-label">แฟกซ์</span> 0-4300-9688</p>
+      <p class="calc-contact-line">องค์การบริหารส่วนตำบลแวงน้อย อำเภอแวงน้อย จังหวัดขอนแก่น 40230</p>
+      <p class="calc-contact-hint">*เบอร์กลางของสำนักงาน อบต. — กรุณาแจ้งเจ้าหน้าที่ว่าต้องการติดต่อกองคลัง (งานจัดเก็บรายได้/ภาษีป้าย)</p>
+    </div>
+
+    <a href="knowledge.html" class="back-link">← กลับไปหน้าความรู้ภาษีป้าย</a>
+  </div>
+</div>
+
+<footer id="footer-contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>เกี่ยวกับเว็บนี้</h4>
+        <p>ศูนย์รวมข้อมูลภาษีท้องถิ่น สำหรับประชาชนในเขต อบต.แวงน้อย ไม่ใช่การประเมินภาษีอย่างเป็นทางการ</p>
+      </div>
+      <div class="footer-col">
+        <h4>ลิงก์ด่วน</h4>
+        <a href="index.html">หน้าแรก</a>
+        <a href="knowledge.html">ความรู้ภาษีป้าย</a>
+        <a href="calculator.html">คำนวณภาษีป้าย</a>
+        <a href="land-tax.html">ภาษีที่ดินและสิ่งปลูกสร้าง</a>
+      </div>
+      <div class="footer-col">
+        <h4>ติดต่อกองคลัง อบต.แวงน้อย</h4>
+        <p>โทร. 0-4300-9687</p>
+        <p>แฟกซ์ 0-4300-9688</p>
+        <p>ตำบลแวงน้อย อำเภอแวงน้อย จังหวัดขอนแก่น 40230</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© องค์การบริหารส่วนตำบลแวงน้อย — งานจัดเก็บรายได้ กองคลัง</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
