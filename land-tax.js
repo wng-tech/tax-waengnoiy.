@@ -24,8 +24,8 @@ const FALLBACK_UNIT_SIZE = 500; // ตร.ซม. ต่อ 1 หน่วยภ
 // ตารางราคาประเมินสิ่งปลูกสร้าง และตารางค่าเสื่อมราคา ดึงจาก Google Sheet
 // ==========================================================================
 
-const LT_DEP_SHEET_ID = "1nwRhZAoW5Pachp3L8HOAl6ttCdRsP8k-MG1nsgtsXU0";   // ไฟล์ตารางค่าเสื่อมราคา
-const LT_PRICE_SHEET_ID = "189qmWeGH2nacYbrL9ZZNzErrqhuNIZrOfC7YUPtz-sQ"; // ไฟล์ตารางราคาประเมินสิ่งปลูกสร้าง
+const LT_DEP_SHEET_ID = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTqjaHfpFtOdHm90TQqtDsD4mm768UKhg-tXnOVV--dyF00U_6UxrcZ1nwPs0RQWuYXqPssMkxWXc5N/pub?output=csv";   // ไฟล์ตารางค่าเสื่อมราคา
+const LT_PRICE_SHEET_ID = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZpkIZONDriKxtd29DnZbhMiRi-lZ14UczQ255n_L8lFqXRchMVhRZdjLGX7A1t4ZqrX0TvXHOt7c/pub?output=csv"; // ไฟล์ตารางราคาประเมินสิ่งปลูกสร้าง
 
 const LT_PRICE_TAB = "prices";
 const LT_DEP_TAB = "depreciation";
