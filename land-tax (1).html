@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ภาษีที่ดินและสิ่งปลูกสร้าง | ศูนย์ข้อมูลภาษีท้องถิ่น อบต.แวงน้อย</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-logo">ศูนย์ข้อมูลความรู้ภาษี<span>ท้องถิ่น</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">หน้าแรก</a></li>
+      <li class="nav-item">
+        <a href="knowledge.html">ภาษีป้าย <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown">
+          <a href="knowledge.html">ความรู้ภาษีป้าย</a>
+          <a href="calculator.html">คำนวณภาษีป้าย</a>
+        </div>
+      </li>
+      <li><a href="land-tax.html" class="active">ภาษีที่ดินและสิ่งปลูกสร้าง</a></li>
+      <li><a href="#footer-contact">ติดต่อเรา</a></li>
+    </ul>
+    <a href="knowledge.html" class="nav-cta">ความรู้ภาษีป้าย</a>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="wrap">
+    <h1>ภาษีที่ดินและสิ่งปลูกสร้าง</h1>
+    <p>ตารางราคาประเมินสิ่งปลูกสร้างและอัตราค่าเสื่อมราคา สำหรับใช้เป็นข้อมูลเบื้องต้น</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap" style="max-width:760px">
+    <h2 class="section-title">เกี่ยวกับข้อมูลชุดนี้</h2>
+    <p style="font-size:14.5px">
+      หน้านี้รวบรวมตารางราคาประเมินทุนทรัพย์สิ่งปลูกสร้างและอัตราค่าเสื่อมราคา เพื่อเป็นข้อมูลอ้างอิงเบื้องต้นสำหรับประชาชนในเขต อบต.แวงน้อย
+      <b>หน้านี้ไม่มีเครื่องคำนวณราคาประเมินอัตโนมัติ</b> เนื่องจากการประเมินราคาจริงต้องพิจารณาปัจจัยหลายด้านประกอบกัน
+      (อายุอาคาร ทำเล สภาพการใช้งาน ฯลฯ) จึงควรให้เจ้าหน้าที่เป็นผู้ประเมินราคาอย่างเป็นทางการ ตารางด้านล่างมีไว้เพื่อการศึกษาข้อมูลเบื้องต้นเท่านั้น
+    </p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="section-title">ตารางราคาประเมินสิ่งปลูกสร้าง</h2>
+    <p class="section-sub">บัญชีราคาประเมินสิ่งปลูกสร้าง ตามพระราชบัญญัติการประเมินราคาทรัพย์สินเพื่อประโยชน์แห่งรัฐ พ.ศ. 2562 จังหวัดขอนแก่น (69 รายการ)</p>
+
+    <div class="table-tools">
+      <input type="text" id="priceSearch" placeholder="ค้นหาด้วยชื่อสิ่งปลูกสร้างหรือรหัส เช่น บ้านพักอาศัย, ตึกแถว, 401" oninput="filterPriceTable()">
+    </div>
+    <p class="table-count" id="priceCount">กำลังโหลดข้อมูล...</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" id="priceTable">
+        <thead>
+          <tr><th style="width:90px">รหัส</th><th>ประเภทสิ่งปลูกสร้าง</th><th style="width:160px; text-align:right">ราคาประเมิน (บาท/ตร.ม.)</th></tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <p class="no-results" id="priceNoResults">ไม่พบรายการที่ค้นหา ลองใช้คำอื่น</p>
+    </div>
+
+    <p class="source-note">
+      ที่มา: บัญชีราคาประเมินสิ่งปลูกสร้าง ตามพระราชบัญญัติการประเมินราคาทรัพย์สินเพื่อประโยชน์แห่งรัฐ พ.ศ. 2562 จังหวัดขอนแก่น
+      ประกาศ ณ วันที่ 2 ธันวาคม พ.ศ. 2564 (นายสมศักดิ์ จังตระกุล ผู้ว่าราชการจังหวัดขอนแก่น ประธานกรรมการประเมินราคาทรัพย์สินเพื่อประโยชน์แห่งรัฐประจำจังหวัดขอนแก่น)
+      มีผลใช้บังคับตั้งแต่วันที่ 1 มกราคม พ.ศ. 2566 เป็นต้นไป
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">ตารางอัตราค่าเสื่อมราคาตามอายุอาคาร</h2>
+    <p class="section-sub">อัตราร้อยละของค่าเสื่อมที่หักได้ แบ่งตามประเภทโครงสร้างและอายุอาคาร (ปี)</p>
+
+    <div class="callout">
+      <b>อ่านตารางนี้อย่างไร:</b> แต่ละประเภทโครงสร้างมี "เพดานค่าเสื่อมสูงสุด" ที่แตกต่างกัน เมื่ออาคารมีอายุถึงเพดานแล้ว
+      จะหักค่าเสื่อมคงที่ตามเพดานนั้นตลอดไป ไม่หักเพิ่มอีก — <b>ไม้</b> ถึงเพดาน 93% เร็วที่สุด (อายุ 19 ปี),
+      <b>ตึกครึ่งไม้</b> ถึงเพดาน 85% ที่อายุ 22 ปี, <b>ตึก</b> เสื่อมช้าสุด ถึงเพดาน 76% ที่อายุ 43 ปี
+    </div>
+
+    <div class="data-table-wrap">
+      <table class="data-table dep-table">
+        <thead>
+          <tr><th>อายุอาคาร (ปี)</th><th>ประเภทตึก</th><th>ประเภทตึกครึ่งไม้</th><th>ประเภทไม้</th></tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="source-note">
+      ที่มา: ตารางกำหนดอัตราร้อยละของค่าเสื่อมโรงเรือนสิ่งปลูกสร้าง ตามระเบียบของคณะกรรมการกำหนดราคาประเมินทุนทรัพย์
+      ว่าด้วยหลักเกณฑ์และวิธีการในการกำหนดราคาประเมินทุนทรัพย์ของอสังหาริมทรัพย์ เพื่อเรียกเก็บค่าธรรมเนียมจดทะเบียนสิทธิและนิติกรรม พ.ศ. 2535
+    </p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="band">
+      <h2>ต้องการประเมินราคาอย่างเป็นทางการ?</h2>
+      <p>ตารางนี้เป็นข้อมูลเบื้องต้นเพื่อการศึกษาเท่านั้น กรุณาติดต่อกองคลัง อบต.แวงน้อย เพื่อขอประเมินราคาอย่างเป็นทางการ</p>
+      <div class="btn-row" style="justify-content:center">
+        <a href="#footer-contact" class="btn btn-pink">ติดต่อกองคลัง</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p id="lt-source-status" style="text-align:center; font-size:11.5px; color:#94a3b8; padding:0 24px 4px;"></p>
+<p style="text-align:center; font-size:11.5px; padding:0 24px 24px;">
+  <a href="https://docs.google.com/spreadsheets/d/189qmWeGH2nacYbrL9ZZNzErrqhuNIZrOfC7YUPtz-sQ/edit" target="_blank" rel="noopener" style="color:var(--blue)">แก้ไขตารางราคาประเมิน</a>
+  &nbsp;·&nbsp;
+  <a href="https://docs.google.com/spreadsheets/d/1nwRhZAoW5Pachp3L8HOAl6ttCdRsP8k-MG1nsgtsXU0/edit" target="_blank" rel="noopener" style="color:var(--blue)">แก้ไขตารางค่าเสื่อมราคา</a>
+  &nbsp;(สำหรับเจ้าหน้าที่)
+</p>
+
+<footer id="footer-contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>เกี่ยวกับเว็บนี้</h4>
+        <p>ศูนย์รวมข้อมูลภาษีท้องถิ่น สำหรับประชาชนในเขต อบต.แวงน้อย ไม่ใช่การประเมินภาษีอย่างเป็นทางการ</p>
+      </div>
+      <div class="footer-col">
+        <h4>ลิงก์ด่วน</h4>
+        <a href="index.html">หน้าแรก</a>
+        <a href="knowledge.html">ความรู้ภาษีป้าย</a>
+        <a href="calculator.html">คำนวณภาษีป้าย</a>
+        <a href="land-tax.html">ภาษีที่ดินและสิ่งปลูกสร้าง</a>
+      </div>
+      <div class="footer-col">
+        <h4>ติดต่อกองคลัง อบต.แวงน้อย</h4>
+        <p>โทร. 0-4300-9687</p>
+        <p>แฟกซ์ 0-4300-9688</p>
+        <p>ตำบลแวงน้อย อำเภอแวงน้อย จังหวัดขอนแก่น 40230</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© องค์การบริหารส่วนตำบลแวงน้อย — งานพัฒนาและจัดเก็บรายได้ กองคลัง</div>
+  </div>
+</footer>
+
+<script>
+function filterPriceTable(){
+  const q = document.getElementById('priceSearch').value.trim().toLowerCase();
+  const rows = document.querySelectorAll('#priceTable tbody tr');
+  let visible = 0;
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    const match = text.includes(q);
+    row.style.display = match ? '' : 'none';
+    if(match) visible++;
+  });
+  document.getElementById('priceCount').textContent = q ? `พบ ${visible} รายการ` : `แสดงทั้งหมด ${rows.length} รายการ`;
+  document.getElementById('priceNoResults').style.display = visible === 0 ? 'block' : 'none';
+}
+</script>
+<script src="land-tax.js"></script>
+
+</body>
+</html>
