@@ -20,3 +20,19 @@ const FALLBACK_RATES = [
 
 const FALLBACK_MIN_TAX = 200;
 const FALLBACK_UNIT_SIZE = 500; // ตร.ซม. ต่อ 1 หน่วยภาษีป้าย
+// ==========================================================================
+// ตารางราคาประเมินสิ่งปลูกสร้าง และตารางค่าเสื่อมราคา ดึงจาก Google Sheet
+// ==========================================================================
+
+const LT_DEP_SHEET_ID = "1nwRhZAoW5Pachp3L8HOAl6ttCdRsP8k-MG1nsgtsXU0";   // ไฟล์ตารางค่าเสื่อมราคา
+const LT_PRICE_SHEET_ID = "189qmWeGH2nacYbrL9ZZNzErrqhuNIZrOfC7YUPtz-sQ"; // ไฟล์ตารางราคาประเมินสิ่งปลูกสร้าง
+
+const LT_PRICE_TAB = "prices";
+const LT_DEP_TAB = "depreciation";
+
+function ltPriceSheetUrl() {
+  return `https://docs.google.com/spreadsheets/d/${LT_PRICE_SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${LT_PRICE_TAB}`;
+}
+function ltDepSheetUrl() {
+  return `https://docs.google.com/spreadsheets/d/${LT_DEP_SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${LT_DEP_TAB}`;
+}
