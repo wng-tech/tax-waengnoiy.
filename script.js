@@ -3,6 +3,7 @@
 // โดยไม่ต้องแก้โค้ด — วิธีตั้งค่าดูที่ไฟล์ "คู่มือแก้ไขอัตราภาษี"
 // ==========================================================================
 
+// ★ แก้ตรงนี้เป็น Spreadsheet ID ของ Google Sheet จริงหลังสร้างเสร็จ ★
 const SHEET_ID = "1I691xwuZc-AxHLhSu6UaioMpc_WHT4ZuxGHaZaCvfWA";
 const SHEET_NAME = "rates"; // ชื่อแท็บ (tab) ในไฟล์ Google Sheet
 
@@ -14,8 +15,8 @@ const FALLBACK_RATES = [
   { code: "1_b", label: "1(ข) อักษรไทยล้วน — ป้ายนอกจาก (ก) (5 บาท)", rate: 5 },
   { code: "2_a", label: "2(ก) ไทยปนต่างประเทศ/ภาพ — ป้ายเคลื่อนที่/เปลี่ยนข้อความได้ (52 บาท)", rate: 52 },
   { code: "2_b", label: "2(ข) ไทยปนต่างประเทศ/ภาพ — ป้ายนอกจาก (ก) (26 บาท)", rate: 26 },
-  { code: "3_a", label: "3(ก) ไม่มีอักษรไทย — ป้ายเคลื่อนที่/เปลี่ยนข้อความได้ (52 บาท)", rate: 52 },
-  { code: "3_b", label: "3(ข) ไม่มีอักษรไทย — ป้ายนอกจาก (ก) (50 บาท)", rate: 50 },
+  { code: "3_a", label: "3(ก) ไม่มีไทย/ไทยอยู่ใต้ภาษาอื่น — ป้ายเคลื่อนที่/เปลี่ยนข้อความได้ (52 บาท)", rate: 52 },
+  { code: "3_b", label: "3(ข) ไม่มีไทย/ไทยอยู่ใต้ภาษาอื่น — ป้ายนอกจาก (ก) (50 บาท)", rate: 50 },
 ];
 const FALLBACK_MIN_TAX = 200;
 const FALLBACK_UNIT_SIZE = 500;
@@ -84,6 +85,7 @@ async function loadRatesFromSheet() {
     UNIT_SIZE = newUnitSize;
 
     rebuildCategoryDropdown();
+    updateKnowledgeDisplay();
     if (statusEl) {
       statusEl.textContent = "โหลดอัตราภาษีล่าสุดจาก Google Sheet เรียบร้อย (" + new Date().toLocaleString("th-TH") + ")";
       statusEl.style.color = "#166534";
@@ -160,7 +162,33 @@ function calculateTax(){
   if (noticeTextEl) noticeTextEl.textContent = MIN_TAX.toLocaleString();
 }
 
+function updateKnowledgeDisplay() {
+  // อัปเดตตัวเลขอัตราภาษีในหน้า "ความรู้ภาษีป้าย" (knowledge.html) ถ้าหน้านั้นมีองค์ประกอบเหล่านี้อยู่
+  RATES.forEach(r => {
+    const el = document.getElementById(`k-rate-${r.code}`);
+    if (el) el.textContent = `${r.rate} บาท/${UNIT_SIZE.toLocaleString()}ตร.ซม.`;
+  });
+  document.querySelectorAll(".k-min-tax").forEach(el => {
+    el.textContent = MIN_TAX.toLocaleString();
+  });
+
+  // คำนวณตัวอย่างใหม่ (ป้ายอักษรไทยล้วน ป้ายนิ่ง ขนาด 100x200 ซม. = 20,000 ตร.ซม.) ให้ตรงกับอัตราปัจจุบันเสมอ
+  const exArea = 20000;
+  const exUnits = Math.ceil(exArea / UNIT_SIZE);
+  const exRate = getRateByCode("1_b");
+  let exResult = exUnits * exRate;
+  if (exResult < MIN_TAX) exResult = MIN_TAX;
+
+  const elUnits = document.getElementById("k-example-units");
+  const elRate = document.getElementById("k-example-rate");
+  const elResult = document.getElementById("k-example-result");
+  if (elUnits) elUnits.textContent = exUnits.toLocaleString();
+  if (elRate) elRate.textContent = exRate;
+  if (elResult) elResult.textContent = exResult.toLocaleString();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  calculateTax();
+  if (document.getElementById('category')) calculateTax();
+  updateKnowledgeDisplay();
   loadRatesFromSheet();
 });
